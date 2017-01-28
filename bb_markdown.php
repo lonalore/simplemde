@@ -12,9 +12,9 @@ if(!defined('e107_INIT'))
 
 
 /**
- * Class simplemde_bb.
+ * Class bb_markdown.
  */
-class simplemde_bb extends e_bb_base
+class bb_markdown extends e_bb_base
 {
 
 	/**
@@ -35,6 +35,14 @@ class simplemde_bb extends e_bb_base
 		$Parsedown = new e107Parsedown();
 
 		return $Parsedown->text($text);
+	}
+
+	/**
+	 * Prepare contents for editor.
+	 */
+	function toWYSIWYG($text, $parm)
+	{
+		return str_replace(array('[markdown]', '[/markdown]'), '', $text);
 	}
 
 }

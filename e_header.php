@@ -42,7 +42,7 @@ class simplemde_header
 		$this->plugPrefs = e107::getPlugConfig('e107projects')->getPref();
 		$this->corePrefs = e107::getPref();
 
-		if((e107::wysiwyg() === true && check_class($this->corePrefs['post_html'])) || strpos(e_SELF, "simplemde/admin_config.php"))
+		if(check_class($this->corePrefs['post_html']))
 		{
 			$this->loadSimpleMDE();
 		}
@@ -55,6 +55,7 @@ class simplemde_header
 	{
 		if(($library = e107::library('load', 'simplemde')) && !empty($library['loaded']))
 		{
+			e107::css('simplemde', 'css/simplemde.init.css');
 			e107::js('simplemde', 'js/simplemde.init.js');
 		}
 	}

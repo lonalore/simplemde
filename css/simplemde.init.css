@@ -1,0 +1,11 @@
+.admin-main-content .editor-toolbar.fullscreen {
+    z-index: 9999;
+}
+
+.CodeMirror-wrap pre {
+    box-shadow: 0 0 0 rgba(255,255,255,0), 0 0 0 0 rgba(0,0,0,0) inset;
+}
+
+.editor-toolbar {
+    background-color: #ffffff;
+}

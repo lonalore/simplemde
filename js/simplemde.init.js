@@ -9,7 +9,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 {
 	'use strict';
 
-	e107.simpleMDE = e107.simpleMDE || {};
+	e107.simpleMDE = e107.simpleMDE || [];
 
 	/**
 	 * Behavior to initialize SimpleMDE editor.
@@ -21,9 +21,12 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 		{
 			$(context).find('.e-wysiwyg').once('simplemde').each(function ()
 			{
-				var simpleMDE = new SimpleMDE({element: this});
+				var $this = $(this);
+				var id = $this.attr('id');
 
-				e107.simpleMDE.push(simpleMDE);
+				$('#bbcode-panel-' + id + '--preview').hide();
+
+				new SimpleMDE({element: this})
 			});
 		}
 	};

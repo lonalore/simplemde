@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "lonalore/simplemde",
+  "type": "e107-plugin",
+  "description": "e107 integration for SimpleMDE Markdown Editor",
+  "keywords": [
+    "simplemde",
+    "markdown",
+    "editor",
+    "wysiwyg",
+    "e107"
+  ],
+  "license": "GPL-2.0+",
+  "homepage": "https://github.com/lonalore/simplemde",
+  "support": {
+    "issues": "https://github.com/lonalore/simplemde/issues",
+    "source": "https://github.com/lonalore/simplemde"
+  },
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "NextStepWebs/simplemde-markdown-editor",
+        "version": "1.11.2",
+        "dist": {
+          "url": "https://github.com/NextStepWebs/simplemde-markdown-editor/archive/1.11.2.zip",
+          "type": "zip"
+        }
+      }
+    }
+  ],
+  "require": {
+    "NextStepWebs/simplemde-markdown-editor": "1.11.2",
+    "erusev/parsedown": "^1.6"
+  }
+}

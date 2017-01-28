@@ -39,9 +39,10 @@ class simplemde_header
 	 */
 	public function __construct()
 	{
-		$this->plugPrefs = e107::getPlugConfig('e107projects')->getPref();
+		$this->plugPrefs = e107::getPlugConfig('simplemde')->getPref();
 		$this->corePrefs = e107::getPref();
 
+		// FIXME - load files only when editor is in use...
 		if(check_class($this->corePrefs['post_html']))
 		{
 			$this->loadSimpleMDE();

@@ -42,7 +42,7 @@ class bb_markdown extends e_bb_base
 	 */
 	function toWYSIWYG($text, $parm)
 	{
-		return str_replace(array('[markdown]', '[/markdown]'), '', $text);
+		// return str_replace(array('[markdown]', '[/markdown]'), '', $text);
 	}
 
 }

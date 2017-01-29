@@ -6,4 +6,4 @@ e107 integration for SimpleMDE Markdown Editor:
 
 ### Requirements
 
-- e107 (>= v2.1.2)
+- e107 (>= v2.1.5)

@@ -44,11 +44,6 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 					styleSelectedText: false,
 					autoDownloadFontAwesome: false
 				});
-
-				$form.submit(function() {
-					// FIXME ... do this on backend!
-					e107.simpleMDE[id].value('[markdown]' + e107.simpleMDE[id].value() + '[/markdown]');
-				});
 			});
 		}
 	};

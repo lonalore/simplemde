@@ -11,4 +11,10 @@
 		<word>wysiwyg</word>
 	</keywords>
 	<copyright>GNU/GPL</copyright>
+	<adminLinks>
+		<link url='admin_config.php' description='LAN_CONFIGURE' icon128="images/simplemde_128.png" icon='images/simplemde_32.png' iconSmall='images/simplemde_16.png' primary='true' >LAN_CONFIGURE</link>
+	</adminLinks>
+	<pluginPrefs>
+		<pref name="smde_"></pref>
+	</pluginPrefs>
 </e107Plugin>

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "lonalore/simplemde",
+  "name": "e107/simplemde",
   "type": "e107-plugin",
   "description": "e107 integration for SimpleMDE Markdown Editor",
   "keywords": [
@@ -32,5 +32,8 @@
   "require": {
     "NextStepWebs/simplemde-markdown-editor": "1.11.2",
     "erusev/parsedown": "^1.6"
+  },
+  "config": {
+    "preferred-install": "dist"
   }
 }

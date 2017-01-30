@@ -44,6 +44,32 @@ class simplemde_library
 			),
 		);
 
+		// Highlight.js (CDN)
+		$libraries['cdn.highlight.js'] = array(
+			'name'              => 'Highlight.js (CDN)',
+			'vendor_url'        => 'https://github.com/isagalaev/highlight.js',
+			'library_path'      => 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js',
+			'path'              => '9.9.0',
+			'version_arguments' => array(
+				'file'    => 'highlight.min.js',
+				'pattern' => '/v(\d\.\d+\.\d+)/',
+				'lines'   => 5,
+			),
+			'files'             => array(
+				'css' => array(
+					'styles/github.min.css' => array(
+						'zone' => 2,
+					),
+				),
+				'js'  => array(
+					'highlight.min.js' => array(
+						'zone' => 2,
+						'type' => 'footer',
+					),
+				),
+			),
+		);
+
 		return $libraries;
 	}
 

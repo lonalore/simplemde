@@ -59,6 +59,11 @@ class simplemde_header
 			e107::css('simplemde', 'css/simplemde.init.css');
 			e107::js('simplemde', 'js/simplemde.init.js');
 		}
+
+		// if(!empty($this->plugPrefs['codeSyntaxHighlighting']))
+		{
+			e107::library('load', 'cdn.highlight.js');
+		}
 	}
 
 }

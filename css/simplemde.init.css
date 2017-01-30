@@ -3,9 +3,55 @@
 }
 
 .CodeMirror-wrap pre {
-    box-shadow: 0 0 0 rgba(255,255,255,0), 0 0 0 0 rgba(0,0,0,0) inset;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0), 0 0 0 0 rgba(0, 0, 0, 0) inset;
 }
 
 .editor-toolbar {
     background-color: #ffffff;
+}
+
+.editor-preview-side > p,
+.editor-preview > p {
+    color: #000000;
+}
+
+.editor-preview-side pre,
+.editor-preview-side code,
+.editor-preview pre,
+.editor-preview code {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0), 0 0 0 0 rgba(0, 0, 0, 0) inset;
+    background: rgba(0, 0, 0, .05);
+}
+
+.editor-preview-side pre code,
+.editor-preview pre code {
+    background: none;
+}
+
+.editor-preview-side table,
+.editor-preview table {
+    background-color: transparent;
+}
+
+.editor-preview-side thead tr,
+.editor-preview thead tr {
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid rgb(3, 3, 3);
+}
+
+.editor-preview-side h1,
+.editor-preview-side h2,
+.editor-preview-side h3,
+.editor-preview-side h4,
+.editor-preview-side h5,
+.editor-preview-side h6,
+.editor-preview h1,
+.editor-preview h2,
+.editor-preview h3,
+.editor-preview h4,
+.editor-preview h5,
+.editor-preview h6 {
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    color: #000000;
 }

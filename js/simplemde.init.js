@@ -42,7 +42,10 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 					showIcons: ["code", "table"],
 					promptURLs: true,
 					styleSelectedText: false,
-					autoDownloadFontAwesome: false
+					autoDownloadFontAwesome: false,
+					renderingConfig: {
+						codeSyntaxHighlighting: true
+					}
 				});
 			});
 		}

@@ -15,6 +15,24 @@
 		<link url='admin_config.php' description='LAN_CONFIGURE' icon128="images/simplemde_128.png" icon='images/simplemde_32.png' iconSmall='images/simplemde_16.png' primary='true' >LAN_CONFIGURE</link>
 	</adminLinks>
 	<pluginPrefs>
-		<pref name="smde_"></pref>
+		<pref name="autoDownloadFontAwesome">0</pref>
+		<pref name="autofocus">0</pref>
+		<pref name="autosaveEnabled">0</pref>
+		<pref name="autosaveDelay">10000</pref>
+		<pref name="forceSync">0</pref>
+		<pref name="indentWithTabs">1</pref>
+		<pref name="initialValue"></pref>
+		<pref name="lineWrapping">1</pref>
+		<pref name="allowAtxHeaderWithoutSpace">0</pref>
+		<pref name="strikethrough">1</pref>
+		<pref name="underscoresBreakWords">0</pref>
+		<pref name="placeholder"></pref>
+		<pref name="promptURLs">0</pref>
+		<pref name="singleLineBreaks">0</pref>
+		<pref name="codeSyntaxHighlighting">0</pref>
+		<pref name="spellChecker">0</pref>
+		<pref name="styleSelectedText">1</pref>
+		<pref name="tabSize">2</pref>
+		<pref name="toolbarTips">1</pref>
 	</pluginPrefs>
 </e107Plugin>

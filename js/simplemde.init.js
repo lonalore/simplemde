@@ -1,6 +1,6 @@
 /**
  * @file
- * SimpleMDE implementation.
+ * SimpleMDE implementation of {@link e107.behaviors} API.
  */
 
 var e107 = e107 || {'settings': {}, 'behaviors': {}};

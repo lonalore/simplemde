@@ -97,6 +97,33 @@ class simplemde_footer
 				$settings['autoDownloadFontAwesome'] = (bool) $this->plugPrefs['autoDownloadFontAwesome'];
 			}
 
+			$settings['l10n'] = array(
+				'bold'            => LAN_SIMPLEMDE_EDITOR_01,
+				'italic'          => LAN_SIMPLEMDE_EDITOR_02,
+				'strikethrough'   => LAN_SIMPLEMDE_EDITOR_03,
+				'heading'         => LAN_SIMPLEMDE_EDITOR_04,
+				'heading-smaller' => LAN_SIMPLEMDE_EDITOR_05,
+				'heading-bigger'  => LAN_SIMPLEMDE_EDITOR_06,
+				'heading-1'       => LAN_SIMPLEMDE_EDITOR_07,
+				'heading-2'       => LAN_SIMPLEMDE_EDITOR_08,
+				'heading-3'       => LAN_SIMPLEMDE_EDITOR_09,
+				'code'            => LAN_SIMPLEMDE_EDITOR_10,
+				'quote'           => LAN_SIMPLEMDE_EDITOR_11,
+				'unordered-list'  => LAN_SIMPLEMDE_EDITOR_12,
+				'ordered-list'    => LAN_SIMPLEMDE_EDITOR_13,
+				'clean-block'     => LAN_SIMPLEMDE_EDITOR_14,
+				'link'            => LAN_SIMPLEMDE_EDITOR_15,
+				'image'           => LAN_SIMPLEMDE_EDITOR_16,
+				'table'           => LAN_SIMPLEMDE_EDITOR_17,
+				'horizontal-rule' => LAN_SIMPLEMDE_EDITOR_18,
+				'preview'         => LAN_SIMPLEMDE_EDITOR_19,
+				'side-by-side'    => LAN_SIMPLEMDE_EDITOR_20,
+				'fullscreen'      => LAN_SIMPLEMDE_EDITOR_21,
+				'guide'           => LAN_SIMPLEMDE_EDITOR_22,
+				'undo'            => LAN_SIMPLEMDE_EDITOR_23,
+				'redo'            => LAN_SIMPLEMDE_EDITOR_24,
+			);
+
 			if((bool) varset($this->plugPrefs['codeSyntaxHighlighting'], 0) === true)
 			{
 				e107::library('load', 'cdn.highlight.js');

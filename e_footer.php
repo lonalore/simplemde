@@ -2,7 +2,7 @@
 
 /**
  * @file
- * This file is loaded in the header of each page of your site.
+ * This file is loaded in the "footer" of each page of your site.
  */
 
 if(!defined('e107_INIT'))
@@ -15,9 +15,9 @@ e107::lan('simplemde', false, true);
 
 
 /**
- * Class simplemde_header.
+ * Class simplemde_footer.
  */
-class simplemde_header
+class simplemde_footer
 {
 
 	/**
@@ -42,8 +42,7 @@ class simplemde_header
 		$this->plugPrefs = e107::getPlugConfig('simplemde')->getPref();
 		$this->corePrefs = e107::getPref();
 
-		// FIXME - load files only when editor is in use...
-		if(check_class($this->corePrefs['post_html']))
+		if(e107::wysiwyg() === true && check_class($this->corePrefs['post_html']))
 		{
 			$this->loadSimpleMDE();
 		}
@@ -114,4 +113,4 @@ class simplemde_header
 }
 
 
-new simplemde_header();
+new simplemde_footer();

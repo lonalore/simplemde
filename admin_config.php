@@ -177,10 +177,10 @@ class simplemde_admin_ui extends e_admin_ui
 			),
 			'tab'        => 0,
 		),
-		'initialValue'               => array(
-			'title' => LAN_SIMPLEMDE_ADMIN_13,
-			'help'  => LAN_SIMPLEMDE_ADMIN_14,
-			'type'  => 'text',
+		'tabSize'                    => array(
+			'title' => LAN_SIMPLEMDE_ADMIN_35,
+			'help'  => LAN_SIMPLEMDE_ADMIN_36,
+			'type'  => 'number',
 			'tab'   => 0,
 		),
 		'lineWrapping'               => array(
@@ -226,12 +226,6 @@ class simplemde_admin_ui extends e_admin_ui
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
 			'tab'        => 0,
-		),
-		'placeholder'                => array(
-			'title' => LAN_SIMPLEMDE_ADMIN_23,
-			'help'  => LAN_SIMPLEMDE_ADMIN_24,
-			'type'  => 'text',
-			'tab'   => 0,
 		),
 		'promptURLs'                 => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_25,
@@ -288,12 +282,6 @@ class simplemde_admin_ui extends e_admin_ui
 			),
 			'tab'        => 0,
 		),
-		'tabSize'                    => array(
-			'title' => LAN_SIMPLEMDE_ADMIN_35,
-			'help'  => LAN_SIMPLEMDE_ADMIN_36,
-			'type'  => 'number',
-			'tab'   => 0,
-		),
 		'toolbarTips'                => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_37,
 			'help'       => LAN_SIMPLEMDE_ADMIN_38,
@@ -304,6 +292,18 @@ class simplemde_admin_ui extends e_admin_ui
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
 			'tab'        => 0,
+		),
+		'initialValue'               => array(
+			'title' => LAN_SIMPLEMDE_ADMIN_13,
+			'help'  => LAN_SIMPLEMDE_ADMIN_14,
+			'type'  => 'text',
+			'tab'   => 0,
+		),
+		'placeholder'                => array(
+			'title' => LAN_SIMPLEMDE_ADMIN_23,
+			'help'  => LAN_SIMPLEMDE_ADMIN_24,
+			'type'  => 'text',
+			'tab'   => 0,
 		),
 		'toggleBold'                 => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_39,

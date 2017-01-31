@@ -265,4 +265,31 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 		}
 	};
 
+	/**
+	 *  TODO...
+	 *
+	 * Action for drawing an img (with Media Manager support).
+	 */
+	e107.simpleMDE.drawImage = function (editor)
+	{
+		var cm = editor.codemirror;
+		var stat = SimpleMDE.getState(cm);
+		var options = editor.options;
+		var url = "http://";
+
+		if(options.promptURLs)
+		{
+			url = SimpleMDE.prompt(options.promptTexts.image);
+
+			// TODO - magic... for media-manager.
+
+			if(!url)
+			{
+				return false;
+			}
+		}
+
+		SimpleMDE._replaceSelection(cm, stat.image, options.insertTexts.image, url);
+	}
+
 })(jQuery);

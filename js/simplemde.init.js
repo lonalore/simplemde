@@ -19,16 +19,16 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 	e107.behaviors.simpleMDE = {
 		attach: function (context, settings)
 		{
+			settings.simpleMDE = settings.simpleMDE || [];
+
 			$(context).find('.e-wysiwyg').once('simplemde').each(function ()
 			{
 				var $element = $(this);
-				var $form = $element.closest('form');
 				var content = $element.html();
 
 				// Remove bbcode from initial value.
 				content = content.replace('[markdown]', '');
 				content = content.replace('[/markdown]', '');
-
 				// Update initial value.
 				$element.html(content);
 
@@ -36,17 +36,61 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 
 				$('#bbcode-panel-' + id + '--preview').hide();
 
-				// TODO admin prefs for customizing editor...
-				e107.simpleMDE[id] = new SimpleMDE({
+				var editorConfig = {
 					element: this,
-					showIcons: ["code", "table"],
-					promptURLs: true,
-					styleSelectedText: false,
-					autoDownloadFontAwesome: false,
+					autofocus: settings.simpleMDE['autofocus'] || false,
+					autosave: {
+						enabled: settings.simpleMDE['autosaveEnabled'] || false,
+						uniqueId: id,
+						delay: settings.simpleMDE['autosaveDelay'] || false
+					},
+					forceSync: settings.simpleMDE['forceSync'] || false,
+					indentWithTabs: settings.simpleMDE['indentWithTabs'] || true,
+					initialValue: settings.simpleMDE['initialValue'] || "",
+					lineWrapping: settings.simpleMDE['lineWrapping'] || false,
+					parsingConfig: {
+						allowAtxHeaderWithoutSpace: settings.simpleMDE['allowAtxHeaderWithoutSpace'] || true,
+						strikethrough: settings.simpleMDE['strikethrough'] || false,
+						underscoresBreakWords: settings.simpleMDE['underscoresBreakWords'] || true
+					},
+					placeholder: settings.simpleMDE['placeholder'] || "",
+					promptURLs: settings.simpleMDE['promptURLs'] || false,
 					renderingConfig: {
-						codeSyntaxHighlighting: true
-					}
-				});
+						singleLineBreaks: settings.simpleMDE['singleLineBreaks'] || true,
+						codeSyntaxHighlighting: settings.simpleMDE['codeSyntaxHighlighting'] || false
+					},
+					spellChecker: settings.simpleMDE['spellChecker'] || true,
+					styleSelectedText: settings.simpleMDE['styleSelectedText'] || true,
+					tabSize: settings.simpleMDE['tabSize'] || 2,
+					toolbarTips: settings.simpleMDE['toolbarTips'] || true,
+					hideIcons: [], // TODO
+					showIcons: ["code", "table"] // TODO
+				};
+
+				if(settings.simpleMDE['autoDownloadFontAwesome'])
+				{
+					editorConfig.autoDownloadFontAwesome = settings.simpleMDE['autoDownloadFontAwesome'];
+				}
+
+				editorConfig.shortcuts = {
+					toggleBold: settings.simpleMDE['toggleBold'] || null,
+					toggleItalic: settings.simpleMDE['toggleItalic'] || null,
+					drawLink: settings.simpleMDE['drawLink'] || null,
+					toggleHeadingSmaller: settings.simpleMDE['toggleHeadingSmaller'] || null,
+					toggleHeadingBigger: settings.simpleMDE['toggleHeadingBigger'] || null,
+					cleanBlock: settings.simpleMDE['cleanBlock'] || null,
+					drawImage: settings.simpleMDE['drawImage'] || null,
+					toggleBlockquote: settings.simpleMDE['toggleBlockquote'] || null,
+					toggleOrderedList: settings.simpleMDE['toggleOrderedList'] || null,
+					toggleUnorderedList: settings.simpleMDE['toggleUnorderedList'] || null,
+					toggleCodeBlock: settings.simpleMDE['toggleCodeBlock'] || null,
+					togglePreview: settings.simpleMDE['togglePreview'] || null,
+					toggleSideBySide: settings.simpleMDE['toggleSideBySide'] || null,
+					toggleFullScreen: settings.simpleMDE['toggleFullScreen'] || null
+				};
+
+				e107.simpleMDE[id] = new SimpleMDE(editorConfig);
+
 			});
 		}
 	};

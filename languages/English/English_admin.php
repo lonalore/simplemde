@@ -8,6 +8,7 @@
 define("LAN_SIMPLEMDE_ADMIN_NAV_01", "Settings");
 
 define("LAN_SIMPLEMDE_ADMIN_TAB_01", "SimpleMDE settings");
+define("LAN_SIMPLEMDE_ADMIN_TAB_02", "SimpleMDE shortcuts");
 
 define("LAN_SIMPLEMDE_ADMIN_01", "Download FontAwesome");
 define("LAN_SIMPLEMDE_ADMIN_02", "If set to Enabled, force downloads FontAwesome (used for icons). Defaults to Auto");
@@ -47,5 +48,28 @@ define("LAN_SIMPLEMDE_ADMIN_35", "Tab Size");
 define("LAN_SIMPLEMDE_ADMIN_36", "If set, customize the tab size. Defaults to 2.");
 define("LAN_SIMPLEMDE_ADMIN_37", "Toolbar Tips");
 define("LAN_SIMPLEMDE_ADMIN_38", "If set to Disabled, disable toolbar button tips. Defaults to Enabled.");
-define("LAN_SIMPLEMDE_ADMIN_39", "");
-define("LAN_SIMPLEMDE_ADMIN_40", "");
+define("LAN_SIMPLEMDE_ADMIN_39", "toggle Bold");
+define("LAN_SIMPLEMDE_ADMIN_40", "toggle Italic");
+define("LAN_SIMPLEMDE_ADMIN_41", "draw Link");
+define("LAN_SIMPLEMDE_ADMIN_42", "toggle Heading Smaller");
+define("LAN_SIMPLEMDE_ADMIN_43", "toggle Heading Bigger");
+define("LAN_SIMPLEMDE_ADMIN_44", "clean Block");
+define("LAN_SIMPLEMDE_ADMIN_45", "draw Image");
+define("LAN_SIMPLEMDE_ADMIN_46", "toggle Blockquote");
+define("LAN_SIMPLEMDE_ADMIN_47", "toggle Ordered List");
+define("LAN_SIMPLEMDE_ADMIN_48", "toggle Unordered List");
+define("LAN_SIMPLEMDE_ADMIN_49", "toggle Code Block");
+define("LAN_SIMPLEMDE_ADMIN_50", "toggle Preview");
+define("LAN_SIMPLEMDE_ADMIN_51", "toggle SideBySide");
+define("LAN_SIMPLEMDE_ADMIN_52", "toggle FullScreen");
+
+define("LAN_SIMPLEMDE_ADMIN_OPT_01", "Enabled");
+define("LAN_SIMPLEMDE_ADMIN_OPT_02", "Disabled");
+define("LAN_SIMPLEMDE_ADMIN_OPT_03", "Auto");
+
+define("LAN_SIMPLEMDE_ADMIN_HELP_01", "Help & Support");
+define("LAN_SIMPLEMDE_ADMIN_HELP_02", "If you think this plugin is useful and saves you a lot of work, then star it on Github! Thank you!");
+define("LAN_SIMPLEMDE_ADMIN_HELP_03", "Please feel free to report any bug found. Pull requests and issues are more than welcome!");
+define("LAN_SIMPLEMDE_ADMIN_HELP_04", "Issue");
+define("LAN_SIMPLEMDE_ADMIN_HELP_05", "Star");
+define("LAN_SIMPLEMDE_ADMIN_HELP_06", "Support on Beerpay");

@@ -15,7 +15,7 @@
 		<link url='admin_config.php' description='LAN_CONFIGURE' icon128="images/simplemde_128.png" icon='images/simplemde_32.png' iconSmall='images/simplemde_16.png' primary='true' >LAN_CONFIGURE</link>
 	</adminLinks>
 	<pluginPrefs>
-		<pref name="autoDownloadFontAwesome">0</pref>
+		<pref name="autoDownloadFontAwesome">2</pref>
 		<pref name="autofocus">0</pref>
 		<pref name="autosaveEnabled">0</pref>
 		<pref name="autosaveDelay">10000</pref>
@@ -28,11 +28,25 @@
 		<pref name="underscoresBreakWords">0</pref>
 		<pref name="placeholder"></pref>
 		<pref name="promptURLs">0</pref>
-		<pref name="singleLineBreaks">0</pref>
+		<pref name="singleLineBreaks">1</pref>
 		<pref name="codeSyntaxHighlighting">0</pref>
-		<pref name="spellChecker">0</pref>
+		<pref name="spellChecker">1</pref>
 		<pref name="styleSelectedText">1</pref>
 		<pref name="tabSize">2</pref>
 		<pref name="toolbarTips">1</pref>
+		<pref name="toggleBold">Cmd-B</pref>
+		<pref name="toggleItalic">Cmd-I</pref>
+		<pref name="drawLink">Cmd-K</pref>
+		<pref name="toggleHeadingSmaller">Cmd-H</pref>
+		<pref name="toggleHeadingBigger">Shift-Cmd-H</pref>
+		<pref name="cleanBlock">Cmd-E</pref>
+		<pref name="drawImage">Cmd-Alt-I</pref>
+		<pref name="toggleBlockquote">Cmd-</pref>
+		<pref name="toggleOrderedList">Cmd-Alt-L</pref>
+		<pref name="toggleUnorderedList">Cmd-L</pref>
+		<pref name="toggleCodeBlock">Cmd-Alt-C</pref>
+		<pref name="togglePreview">Cmd-P</pref>
+		<pref name="toggleSideBySide">F9</pref>
+		<pref name="toggleFullScreen">F11</pref>
 	</pluginPrefs>
 </e107Plugin>

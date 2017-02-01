@@ -280,7 +280,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 
 		if(options.promptURLs)
 		{
-			url = SimpleMDE.prompt(options.promptTexts.image);
+			url = prompt(options.promptTexts.image);
 
 			// TODO - magic... for media-manager.
 
@@ -300,19 +300,23 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 	e107.simpleMDE.getState = function (cm, pos)
 	{
 		pos = pos || cm.getCursor("start");
+
 		var stat = cm.getTokenAt(pos);
+
 		if(!stat.type)
 		{
 			return {};
 		}
 
 		var types = stat.type.split(" ");
+		var ret = {};
+		var data;
+		var text;
 
-		var ret = {},
-			data, text;
 		for(var i = 0; i < types.length; i++)
 		{
 			data = types[i];
+
 			if(data === "strong")
 			{
 				ret.bold = true;
@@ -320,6 +324,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 			else if(data === "variable-2")
 			{
 				text = cm.getLine(pos.line);
+
 				if(/^\s*\d+\.\s/.test(text))
 				{
 					ret["ordered-list"] = true;
@@ -381,10 +386,12 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 		var end = startEnd[1];
 		var startPoint = cm.getCursor("start");
 		var endPoint = cm.getCursor("end");
+
 		if(url)
 		{
 			end = end.replace("#url#", url);
 		}
+
 		if(active)
 		{
 			text = cm.getLine(startPoint.line);
@@ -406,6 +413,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 				endPoint.ch += start.length;
 			}
 		}
+
 		cm.setSelection(startPoint, endPoint);
 		cm.focus();
 	};

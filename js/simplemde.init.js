@@ -300,7 +300,15 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 
 		$.post(endpoint, {content: plainText}).done(function (data)
 		{
-			preview.innerHTML = data;
+			$(preview).html(data);
+
+			if(e107.settings.simpleMDE['codeSyntaxHighlighting'] === true && window.hljs)
+			{
+				$(preview).find('pre code').each(function ()
+				{
+					this.innerHTML = window.hljs.highlightAuto(this.innerHTML).value;
+				});
+			}
 		});
 	};
 

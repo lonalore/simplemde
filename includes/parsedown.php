@@ -41,4 +41,26 @@ class e107Parsedown extends Parsedown
 		return $Excerpt;
 	}
 
+	/**
+	 * Parse Image URLs with $tp->thumbUrl() to get SEF URLs.
+	 *
+	 * @param $Excerpt
+	 * @return array|void
+	 */
+	protected function inlineImage($Excerpt)
+	{
+		$Inline = parent::inlineImage($Excerpt);
+
+		if(empty($Inline['element']['attributes']['src']))
+		{
+			return $Inline;
+		}
+
+		$tp = e107::getParser();
+
+		$Inline['element']['attributes']['src'] = $tp->thumbUrl($Inline['element']['attributes']['src']);
+
+		return $Inline;
+	}
+
 }

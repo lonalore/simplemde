@@ -270,11 +270,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 
 				editorConfig.previewRender = function (plainText, preview)
 				{
-					e107.callbacks.waitForFinalEvent(function ()
-					{
-						e107.simpleMDE.markdownParser(plainText, preview);
-					}, 200, "SimpleMDEpreviewRender");
-
+					e107.simpleMDE.markdownParser(plainText, preview);
 					return settings.simpleMDE.l10n['loading'] || "Loading...";
 				};
 

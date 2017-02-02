@@ -300,13 +300,18 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 
 		$.post(endpoint, {content: plainText}).done(function (data)
 		{
-			$(preview).html(data);
+			$(preview).html(data).text();
 
 			if(e107.settings.simpleMDE['codeSyntaxHighlighting'] === true && window.hljs)
 			{
 				$(preview).find('pre code').each(function ()
 				{
-					this.innerHTML = window.hljs.highlightAuto(this.innerHTML).value;
+					var $code = $(this);
+
+					var code = $code.text();
+					var highlighted = window.hljs.highlightAuto(code).value;
+
+					$code.html(highlighted).text();
 				});
 			}
 		});

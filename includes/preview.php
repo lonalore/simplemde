@@ -15,6 +15,8 @@ if(!e107::isInstalled('simplemde'))
 	exit;
 }
 
+// TODO - e-token validation...
+
 // Default output.
 $html = '';
 

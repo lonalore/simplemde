@@ -270,12 +270,12 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 
 				editorConfig.previewRender = function (plainText, preview)
 				{
+					// Async function.
 					e107.simpleMDE.markdownParser(plainText, preview);
 					return settings.simpleMDE.l10n['loading'] || "Loading...";
 				};
 
 				e107.simpleMDE[id] = new SimpleMDE(editorConfig);
-
 			});
 		}
 	};
@@ -287,8 +287,6 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 	 *  Plaintext Markdown.
 	 * @param {object} preview
 	 *  Element contains preview.
-	 *
-	 * @returns {String|null|string}
 	 */
 	e107.simpleMDE.markdownParser = function (plainText, preview)
 	{

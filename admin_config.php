@@ -109,6 +109,7 @@ class simplemde_admin_ui extends e_admin_ui
 	protected $preftabs = array(
 		LAN_SIMPLEMDE_ADMIN_TAB_01,
 		LAN_SIMPLEMDE_ADMIN_TAB_02,
+		LAN_SIMPLEMDE_ADMIN_TAB_03,
 	);
 
 	/**
@@ -374,6 +375,16 @@ class simplemde_admin_ui extends e_admin_ui
 			'title' => LAN_SIMPLEMDE_ADMIN_52,
 			'type'  => 'text',
 			'tab'   => 1,
+		),
+		'eToken'                     => array(
+			'title'      => LAN_SIMPLEMDE_ADMIN_53,
+			'type'       => 'dropdown',
+			'data'       => 'int',
+			'writeParms' => array(
+				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
+				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
+			),
+			'tab'        => 2,
 		),
 	);
 

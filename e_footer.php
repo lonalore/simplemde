@@ -122,6 +122,7 @@ class simplemde_footer
 				'guide'           => LAN_SIMPLEMDE_EDITOR_22,
 				'undo'            => LAN_SIMPLEMDE_EDITOR_23,
 				'redo'            => LAN_SIMPLEMDE_EDITOR_24,
+				'loading'         => LAN_LOADING,
 			);
 
 			// Allow to use Media Manager on Admin UI.

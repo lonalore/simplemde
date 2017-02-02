@@ -260,6 +260,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 					toggleFullScreen: settings.simpleMDE['toggleFullScreen'] || null
 				};
 
+				// TODO
 				editorConfig.insertTexts = {
 					link: ["[", "](#url#)"],
 					image: ["![", "](#url#)"],
@@ -274,7 +275,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 						e107.simpleMDE.markdownParser(plainText, preview);
 					}, 200, "SimpleMDEpreviewRender");
 
-					return 'Loading...';
+					return settings.simpleMDE.l10n['loading'] || "Loading...";
 				};
 
 				e107.simpleMDE[id] = new SimpleMDE(editorConfig);

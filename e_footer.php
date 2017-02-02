@@ -124,6 +124,31 @@ class simplemde_footer
 				'redo'            => LAN_SIMPLEMDE_EDITOR_24,
 			);
 
+			// Allow to use Media Manager on Admin UI.
+			if(e_ADMIN_AREA)
+			{
+				// mode=main&action=dialog&for=main&tagid=drawImageValue&iframe=1&video=0
+				$query = array(
+					'mode'   => 'main',
+					'action' => 'dialog',
+					'for'    => 'main',
+					'tagid'  => 'drawImageValue',
+					'iframe' => 1,
+					'video'  => 0,
+				);
+
+				$url = e_ADMIN_ABS . 'image.php?' . http_build_query($query);
+
+				// Helper attributes for modal-opener.
+				$settings['useMediaManager'] = array(
+					'data-modal-caption' => 'Media Manager',
+					'data-cache'         => 'false',
+					'href'               => $url,
+				);
+			}
+
+			$settings['previewRenderURL'] = e_PLUGIN_ABS . 'simplemde/includes/preview.php';
+
 			if((bool) varset($this->plugPrefs['codeSyntaxHighlighting'], 0) === true)
 			{
 				e107::library('load', 'cdn.highlight.js');

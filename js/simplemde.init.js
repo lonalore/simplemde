@@ -131,7 +131,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 				{
 					name: "image",
 					// action: SimpleMDE.drawImage,
-					action: e107.simpleMDE.drawImage,
+					action: settings.simpleMDE['useMediaManager'] ? e107.simpleMDE.drawImage : SimpleMDE.drawImage,
 					className: "fa fa-picture-o",
 					title: settings.simpleMDE.l10n['image'] || "Insert Image"
 				},
@@ -260,6 +260,23 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 					toggleFullScreen: settings.simpleMDE['toggleFullScreen'] || null
 				};
 
+				editorConfig.insertTexts = {
+					link: ["[", "](#url#)"],
+					image: ["![", "](#url#)"],
+					table: ["", "\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text     | Text     |\n\n"],
+					horizontalRule: ["", "\n\n-----\n\n"]
+				};
+
+				editorConfig.previewRender = function (plainText, preview)
+				{
+					e107.callbacks.waitForFinalEvent(function ()
+					{
+						e107.simpleMDE.markdownParser(plainText, preview);
+					}, 200, "SimpleMDEpreviewRender");
+
+					return 'Loading...';
+				};
+
 				e107.simpleMDE[id] = new SimpleMDE(editorConfig);
 
 			});
@@ -267,30 +284,135 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 	};
 
 	/**
-	 *  TODO...
+	 * Custom function for parsing the plaintext Markdown and returning HTML.
 	 *
+	 * @param {string} plainText
+	 *  Plaintext Markdown.
+	 * @param {object} preview
+	 *  Element contains preview.
+	 *
+	 * @returns {String|null|string}
+	 */
+	e107.simpleMDE.markdownParser = function (plainText, preview)
+	{
+		var endpoint = e107.settings.simpleMDE['previewRenderURL'];
+
+		$.post(endpoint, {content: plainText}).done(function (data)
+		{
+			preview.innerHTML = data;
+		});
+	};
+
+	/**
+	 * Helper (container) element for:
+	 * - e107.simpleMDE.drawImageValueOpener
+	 * - e107.simpleMDE.drawImageValueInput
+	 *
+	 * @see e107.simpleMDE.drawImage
+	 *
+	 * @type {boolean}
+	 */
+	e107.simpleMDE.drawImageValueContainer = e107.simpleMDE.drawImageValueContainer || false;
+
+	/**
+	 * Helper element for opening modal with Media Manager.
+	 *
+	 * @see e107.simpleMDE.drawImage
+	 *
+	 * @type {boolean}
+	 */
+	e107.simpleMDE.drawImageValueOpener = e107.simpleMDE.drawImageValueOpener || false;
+
+	/**
+	 * Helper element for storing Image URL from Media Manager.
+	 *
+	 * @see e107.simpleMDE.drawImage
+	 *
+	 * @type {boolean}
+	 */
+	e107.simpleMDE.drawImageValueInput = e107.simpleMDE.drawImageValueInput || false;
+
+	/**
+	 * Helper element for storing Image (preview) URL from Media Manager. This
+	 * is only needed for avoidance of errors.
+	 *
+	 * @see e107.simpleMDE.drawImage
+	 *
+	 * @type {boolean}
+	 */
+	e107.simpleMDE.drawImageValueInputPrev = e107.simpleMDE.drawImageValueInputPrev || false;
+
+	/**
 	 * Action for drawing an img (with Media Manager support).
+	 *
+	 * @param {object} editor
+	 *  SimpleMDE Editor object.
 	 */
 	e107.simpleMDE.drawImage = function (editor)
 	{
-		var cm = editor.codemirror;
-		var stat = e107.simpleMDE.getState(cm);
-		var options = editor.options;
-		var url = "http://";
+		var config = e107.settings.simpleMDE['useMediaManager'];
 
-		if(options.promptURLs)
+		// Assemble helper elements.
+		if(e107.simpleMDE.drawImageValueContainer === false)
 		{
-			url = prompt(options.promptTexts.image);
+			e107.simpleMDE.drawImageValueContainer = $('<div id="drawImageValueContainer"></div>');
+			e107.simpleMDE.drawImageValueInput = $('<input type="hidden" id="drawImageValue" value=""/>');
+			// This is only needed for avoidance of errors...
+			e107.simpleMDE.drawImageValueInputPrev = $('<input type="hidden" id="drawImageValue_prev" value=""/>');
+			e107.simpleMDE.drawImageValueOpener = $('<a></a>');
 
-			// TODO - magic... for media-manager.
+			// Set helper attributes on modal opener.
+			e107.simpleMDE.drawImageValueOpener.attr('href', config['href']);
+			e107.simpleMDE.drawImageValueOpener.attr('class', 'e-modal');
+			e107.simpleMDE.drawImageValueOpener.attr('data-modal-caption', config['data-modal-caption']);
+			e107.simpleMDE.drawImageValueOpener.attr('data-cache', config['data-cache']);
+			e107.simpleMDE.drawImageValueOpener.attr('data-target', '#uiModal');
 
-			if(!url)
-			{
-				return false;
-			}
+			// Assemble HTML structure.
+			e107.simpleMDE.drawImageValueOpener.appendTo(e107.simpleMDE.drawImageValueContainer);
+			e107.simpleMDE.drawImageValueInput.appendTo(e107.simpleMDE.drawImageValueContainer);
+			e107.simpleMDE.drawImageValueInputPrev.appendTo(e107.simpleMDE.drawImageValueContainer);
+
+			// Hide container and append it to the body.
+			e107.simpleMDE.drawImageValueContainer.css('display', 'none');
+			e107.simpleMDE.drawImageValueContainer.appendTo($('body'));
+
+			// Apply "e107.behaviors.eModalAdmin" (and other behaviors) on Opener.
+			e107.attachBehaviors(e107.simpleMDE.drawImageValueContainer);
 		}
 
-		e107.simpleMDE.replaceSelection(cm, stat.image, options.insertTexts.image, url);
+		// Click for opening modal with Media Manager.
+		e107.simpleMDE.drawImageValueOpener.click();
+
+		var $modal = $('#uiModal');
+
+		// Add a unique class to modal.
+		$modal.addClass('simplemde-drawimage-modal');
+
+		// After the Bootstrap modal dialog is closed.
+		$modal.on('hidden.bs.modal', function ()
+		{
+			var $this = $(this);
+
+			// If this event callback belongs to a Media Manager modal, which was
+			// opened from a SimpleMDE Editor.
+			if($this.hasClass('simplemde-drawimage-modal'))
+			{
+				var url = e107.simpleMDE.drawImageValueInput.val();
+				var cm = editor.codemirror;
+				var stat = e107.simpleMDE.getState(cm);
+				var options = editor.options;
+
+				$this.removeClass('simplemde-drawimage-modal');
+
+				if(url == '')
+				{
+					return false;
+				}
+
+				e107.simpleMDE.replaceSelection(cm, stat.image, options.insertTexts.image, url);
+			}
+		});
 	};
 
 

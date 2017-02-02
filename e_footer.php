@@ -97,6 +97,11 @@ class simplemde_footer
 				$settings['autoDownloadFontAwesome'] = (bool) $this->plugPrefs['autoDownloadFontAwesome'];
 			}
 
+			if(deftrue('FONTAWESOME', false))
+			{
+				$settings['autoDownloadFontAwesome'] = false;
+			}
+
 			$settings['l10n'] = array(
 				'bold'            => LAN_SIMPLEMDE_EDITOR_01,
 				'italic'          => LAN_SIMPLEMDE_EDITOR_02,

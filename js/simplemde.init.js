@@ -195,6 +195,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 			{
 				var $element = $(this);
 				var content = $element.html();
+				var config = settings.simpleMDE;
 
 				// Remove bbcode from initial value.
 				content = content.replace('[markdown]', '');
@@ -208,56 +209,56 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 
 				var editorConfig = {
 					element: this,
-					autofocus: settings.simpleMDE['autofocus'] || false,
+					autofocus: config['autofocus'],
 					autosave: {
-						enabled: settings.simpleMDE['autosaveEnabled'] || false,
+						enabled: config['autosaveEnabled'],
 						uniqueId: id,
-						delay: settings.simpleMDE['autosaveDelay'] || false
+						delay: config['autosaveDelay']
 					},
-					forceSync: settings.simpleMDE['forceSync'] || false,
-					indentWithTabs: settings.simpleMDE['indentWithTabs'] || true,
-					initialValue: settings.simpleMDE['initialValue'] || "",
-					lineWrapping: settings.simpleMDE['lineWrapping'] || false,
+					forceSync: config['forceSync'],
+					indentWithTabs: config['indentWithTabs'],
+					initialValue: config['initialValue'],
+					lineWrapping: config['lineWrapping'],
 					parsingConfig: {
-						allowAtxHeaderWithoutSpace: settings.simpleMDE['allowAtxHeaderWithoutSpace'] || true,
-						strikethrough: settings.simpleMDE['strikethrough'] || false,
-						underscoresBreakWords: settings.simpleMDE['underscoresBreakWords'] || true
+						allowAtxHeaderWithoutSpace: config['allowAtxHeaderWithoutSpace'],
+						strikethrough: config['strikethrough'],
+						underscoresBreakWords: config['underscoresBreakWords']
 					},
-					placeholder: settings.simpleMDE['placeholder'] || "",
-					promptURLs: settings.simpleMDE['promptURLs'] || false,
+					placeholder: config['placeholder'],
+					promptURLs: config['promptURLs'],
 					renderingConfig: {
-						singleLineBreaks: settings.simpleMDE['singleLineBreaks'] || true,
-						codeSyntaxHighlighting: settings.simpleMDE['codeSyntaxHighlighting'] || false
+						singleLineBreaks: config['singleLineBreaks'],
+						codeSyntaxHighlighting: config['codeSyntaxHighlighting']
 					},
-					spellChecker: settings.simpleMDE['spellChecker'] || true,
-					styleSelectedText: settings.simpleMDE['styleSelectedText'] || true,
-					tabSize: settings.simpleMDE['tabSize'] || 2,
-					toolbarTips: settings.simpleMDE['toolbarTips'] || true,
-					toolbar: settings.simpleMDE.toolbarButtons,
+					spellChecker: config['spellChecker'],
+					styleSelectedText: config['styleSelectedText'],
+					tabSize: config['tabSize'],
+					toolbarTips: config['toolbarTips'],
+					toolbar: config['toolbarButtons'],
 					hideIcons: [], // TODO
 					showIcons: [] // TODO
 				};
 
-				if(settings.simpleMDE['autoDownloadFontAwesome'])
+				if(config.hasOwnProperty('autoDownloadFontAwesome'))
 				{
-					editorConfig.autoDownloadFontAwesome = settings.simpleMDE['autoDownloadFontAwesome'];
+					editorConfig.autoDownloadFontAwesome = config['autoDownloadFontAwesome'];
 				}
 
 				editorConfig.shortcuts = {
-					toggleBold: settings.simpleMDE['toggleBold'] || null,
-					toggleItalic: settings.simpleMDE['toggleItalic'] || null,
-					drawLink: settings.simpleMDE['drawLink'] || null,
-					toggleHeadingSmaller: settings.simpleMDE['toggleHeadingSmaller'] || null,
-					toggleHeadingBigger: settings.simpleMDE['toggleHeadingBigger'] || null,
-					cleanBlock: settings.simpleMDE['cleanBlock'] || null,
-					drawImage: settings.simpleMDE['drawImage'] || null,
-					toggleBlockquote: settings.simpleMDE['toggleBlockquote'] || null,
-					toggleOrderedList: settings.simpleMDE['toggleOrderedList'] || null,
-					toggleUnorderedList: settings.simpleMDE['toggleUnorderedList'] || null,
-					toggleCodeBlock: settings.simpleMDE['toggleCodeBlock'] || null,
-					togglePreview: settings.simpleMDE['togglePreview'] || null,
-					toggleSideBySide: settings.simpleMDE['toggleSideBySide'] || null,
-					toggleFullScreen: settings.simpleMDE['toggleFullScreen'] || null
+					toggleBold: config['toggleBold'],
+					toggleItalic: config['toggleItalic'],
+					drawLink: config['drawLink'],
+					toggleHeadingSmaller: config['toggleHeadingSmaller'],
+					toggleHeadingBigger: config['toggleHeadingBigger'],
+					cleanBlock: config['cleanBlock'],
+					drawImage: config['drawImage'],
+					toggleBlockquote: config['toggleBlockquote'],
+					toggleOrderedList: config['toggleOrderedList'],
+					toggleUnorderedList: config['toggleUnorderedList'],
+					toggleCodeBlock: config['toggleCodeBlock'],
+					togglePreview: config['togglePreview'],
+					toggleSideBySide: config['toggleSideBySide'],
+					toggleFullScreen: config['toggleFullScreen']
 				};
 
 				// TODO
@@ -272,7 +273,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 				{
 					// Async function.
 					e107.simpleMDE.markdownParser(plainText, preview);
-					return settings.simpleMDE.l10n['loading'] || "Loading...";
+					return config.l10n['loading'] || "Loading...";
 				};
 
 				e107.simpleMDE[id] = new SimpleMDE(editorConfig);

@@ -167,7 +167,7 @@ class simplemde_parse
 	 */
 	function simpleMDEisInUse()
 	{
-		$enableOn = varset($this->plugPrefs['enableEditor'], 1);
+		$enableOn = (int) varset($this->plugPrefs['enableEditor'], 1);
 
 		$enable = false;
 

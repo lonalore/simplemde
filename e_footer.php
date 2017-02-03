@@ -176,7 +176,7 @@ class simplemde_footer
 	 */
 	function simpleMDEisInUse()
 	{
-		$enableOn = varset($this->plugPrefs['enableEditor'], 1);
+		$enableOn = (int) varset($this->plugPrefs['enableEditor'], 1);
 
 		$enable = false;
 

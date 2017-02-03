@@ -31,7 +31,8 @@
   ],
   "require": {
     "NextStepWebs/simplemde-markdown-editor": "1.11.2",
-    "erusev/parsedown": "^1.6"
+    "erusev/parsedown": "^1.6",
+    "league/html-to-markdown": "^4.4"
   },
   "config": {
     "preferred-install": "dist"

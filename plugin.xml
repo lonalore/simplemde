@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e107Plugin name="SimpleMDE" lan="LAN_PLUGIN_SIMPLEMDE_NAME" version="1.0" date="2017-01-31" compatibility="2.0" installRequired="true">
+<e107Plugin name="SimpleMDE" lan="LAN_PLUGIN_SIMPLEMDE_NAME" version="1.0" date="2017-02-03" compatibility="2.0" installRequired="true">
 	<author name="Lóna Lore" url="https://github.com/lonalore/simplemde"/>
 	<summary lan="LAN_PLUGIN_SIMPLEMDE_SUMM">e107 integration for SimpleMDE Markdown Editor</summary>
 	<description lan="LAN_PLUGIN_SIMPLEMDE_DESC">A drop-in JavaScript textarea replacement for writing beautiful and understandable Markdown. The WYSIWYG-esque editor allows users who may be less experienced with Markdown to use familiar toolbar buttons and shortcuts. In addition, the syntax is rendered while editing to clearly show the expected result. Headings are larger, emphasized words are italicized, links are underlined, etc. SimpleMDE is one of the first editors to feature both built-in autosaving and spell checking.</description>
@@ -51,4 +51,8 @@
 		<pref name="eToken">1</pref>
 		<pref name="enableEditor">1</pref>
 	</pluginPrefs>
+	<dependencies>
+		<extension name='dom'/>
+		<extension name='xml'/>
+	</dependencies>
 </e107Plugin>

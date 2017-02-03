@@ -127,6 +127,7 @@ class simplemde_admin_ui extends e_admin_ui
 			),
 			'tab'        => 0,
 		),
+		/* // TODO
 		'eToken'                     => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_53,
 			'type'       => 'dropdown',
@@ -137,6 +138,7 @@ class simplemde_admin_ui extends e_admin_ui
 			),
 			'tab'        => 0,
 		),
+		*/
 		'autoDownloadFontAwesome'    => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_01,
 			'help'       => LAN_SIMPLEMDE_ADMIN_02,

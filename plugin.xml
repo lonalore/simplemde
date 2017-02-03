@@ -49,5 +49,6 @@
 		<pref name="toggleSideBySide">F9</pref>
 		<pref name="toggleFullScreen">F11</pref>
 		<pref name="eToken">1</pref>
+		<pref name="enableEditor">1</pref>
 	</pluginPrefs>
 </e107Plugin>

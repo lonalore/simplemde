@@ -29,11 +29,19 @@ class simplemde_parse
 	private $plugPrefs = array();
 
 	/**
+	 * Core preferences.
+	 *
+	 * @var array
+	 */
+	private $corePrefs = array();
+
+	/**
 	 * Constructor.
 	 */
 	function __construct()
 	{
 		$this->plugPrefs = e107::getPlugConfig('simplemde')->getPref();
+		$this->corePrefs = e107::getPref();
 	}
 
 	/**
@@ -89,6 +97,16 @@ class simplemde_parse
 	 */
 	function toWYSIWYG($text, $param = array())
 	{
+		// If SimpleMDE is not in use, we returns with the original text.
+		if(!$this->simpleMDEisInUse())
+		{
+			return $text;
+		}
+
+		// Remove wrapping BBCode tag (if available).
+		$text = str_replace(array('[markdown]', '[/markdown]'), '', $text);
+
+		// If text contains [html], need to parse it to get HTML contents.
 		if(substr($text, 0, 6) == '[html]')
 		{
 			$tp = e107::getParser();
@@ -101,6 +119,7 @@ class simplemde_parse
 		// Remove HTML comments.
 		$text = preg_replace('/<!--(.*)-->/Uis', '', $text);
 
+		// If text contains HTML tags, we need to convert it to Markdown format.
 		if($this->isHTML($text))
 		{
 			$converter = new HtmlConverter();
@@ -128,7 +147,7 @@ class simplemde_parse
 	 *  String to be checked.
 	 *
 	 * @return bool
-	 *  True if the string is HTML, otherwise false.
+	 *  True if the string contains HTML, otherwise false.
 	 */
 	function isHTML($string)
 	{
@@ -138,6 +157,44 @@ class simplemde_parse
 		}
 
 		return preg_match("/<[^<]+>/", $string, $m) != 0;
+	}
+
+	/**
+	 * Checking whether SimpleMDE Editor is in use or not.
+	 *
+	 * @return bool
+	 *  If true, need to convert HTML to Markdown format. Otherwise false.
+	 */
+	function simpleMDEisInUse()
+	{
+		$enableOn = varset($this->plugPrefs['enableEditor'], 1);
+
+		$enable = false;
+
+		// "Enable Markdown Editor in Admin Area and on Frontend too"
+		if(!$enable && $enableOn === 1)
+		{
+			$enable = true;
+		}
+
+		// "Enable Markdown Editor only in Admin Area"
+		if(!$enable && $enableOn === 2 && deftrue('e_ADMIN_AREA', false))
+		{
+			$enable = true;
+		}
+
+		// "Enable Markdown Editor only on Frontend"
+		if(!$enable && $enableOn === 3 && !deftrue('e_ADMIN_AREA', false))
+		{
+			$enable = true;
+		}
+
+		if($enable === true && e107::wysiwyg() === true && check_class($this->corePrefs['post_html']))
+		{
+			return true;
+		}
+
+		return false;
 	}
 
 }

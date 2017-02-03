@@ -7,9 +7,9 @@
 
 define("LAN_SIMPLEMDE_ADMIN_NAV_01", "Settings");
 
-define("LAN_SIMPLEMDE_ADMIN_TAB_01", "SimpleMDE settings");
-define("LAN_SIMPLEMDE_ADMIN_TAB_02", "SimpleMDE shortcuts");
-define("LAN_SIMPLEMDE_ADMIN_TAB_03", "Security");
+define("LAN_SIMPLEMDE_ADMIN_TAB_01", "General settings");
+define("LAN_SIMPLEMDE_ADMIN_TAB_02", "SimpleMDE settings");
+define("LAN_SIMPLEMDE_ADMIN_TAB_03", "SimpleMDE shortcuts");
 
 define("LAN_SIMPLEMDE_ADMIN_01", "Download FontAwesome");
 define("LAN_SIMPLEMDE_ADMIN_02", "If set to Enabled, force downloads FontAwesome (used for icons). Defaults to Auto");
@@ -64,6 +64,10 @@ define("LAN_SIMPLEMDE_ADMIN_50", "toggle Preview");
 define("LAN_SIMPLEMDE_ADMIN_51", "toggle SideBySide");
 define("LAN_SIMPLEMDE_ADMIN_52", "toggle FullScreen");
 define("LAN_SIMPLEMDE_ADMIN_53", "E-token validation");
+define("LAN_SIMPLEMDE_ADMIN_54", "Enable Markdown Editor");
+define("LAN_SIMPLEMDE_ADMIN_55", "in Admin Area and on Frontend too");
+define("LAN_SIMPLEMDE_ADMIN_56", "only in Admin Area");
+define("LAN_SIMPLEMDE_ADMIN_57", "only on Frontend");
 
 define("LAN_SIMPLEMDE_ADMIN_OPT_01", "Enabled");
 define("LAN_SIMPLEMDE_ADMIN_OPT_02", "Disabled");

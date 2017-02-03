@@ -42,7 +42,7 @@ class simplemde_footer
 		$this->plugPrefs = e107::getPlugConfig('simplemde')->getPref();
 		$this->corePrefs = e107::getPref();
 
-		if(e107::wysiwyg() === true && check_class($this->corePrefs['post_html']))
+		if($this->simpleMDEisInUse())
 		{
 			$this->loadSimpleMDE();
 		}
@@ -131,7 +131,7 @@ class simplemde_footer
 			);
 
 			// Allow to use Media Manager on Admin UI.
-			if(e_ADMIN_AREA)
+			if(deftrue('e_ADMIN_AREA', false))
 			{
 				// mode=main&action=dialog&for=main&tagid=drawImageValue&iframe=1&video=0
 				$query = array(
@@ -166,6 +166,44 @@ class simplemde_footer
 			e107::css('simplemde', 'css/simplemde.init.css');
 		}
 
+	}
+
+	/**
+	 * Checking whether SimpleMDE Editor is in use or not.
+	 *
+	 * @return bool
+	 *  If true, need to convert HTML to Markdown format. Otherwise false.
+	 */
+	function simpleMDEisInUse()
+	{
+		$enableOn = varset($this->plugPrefs['enableEditor'], 1);
+
+		$enable = false;
+
+		// "Enable Markdown Editor in Admin Area and on Frontend too"
+		if(!$enable && $enableOn === 1)
+		{
+			$enable = true;
+		}
+
+		// "Enable Markdown Editor only in Admin Area"
+		if(!$enable && $enableOn === 2 && deftrue('e_ADMIN_AREA', false))
+		{
+			$enable = true;
+		}
+
+		// "Enable Markdown Editor only on Frontend"
+		if(!$enable && $enableOn === 3 && !deftrue('e_ADMIN_AREA', false))
+		{
+			$enable = true;
+		}
+
+		if($enable === true && e107::wysiwyg() === true && check_class($this->corePrefs['post_html']))
+		{
+			return true;
+		}
+
+		return false;
 	}
 
 }

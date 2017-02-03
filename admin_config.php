@@ -116,6 +116,27 @@ class simplemde_admin_ui extends e_admin_ui
 	 * @var array
 	 */
 	protected $prefs = array(
+		'enableEditor'               => array(
+			'title'      => LAN_SIMPLEMDE_ADMIN_54,
+			'type'       => 'dropdown',
+			'data'       => 'int',
+			'writeParms' => array(
+				1 => LAN_SIMPLEMDE_ADMIN_55,
+				2 => LAN_SIMPLEMDE_ADMIN_56,
+				3 => LAN_SIMPLEMDE_ADMIN_57,
+			),
+			'tab'        => 0,
+		),
+		'eToken'                     => array(
+			'title'      => LAN_SIMPLEMDE_ADMIN_53,
+			'type'       => 'dropdown',
+			'data'       => 'int',
+			'writeParms' => array(
+				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
+				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
+			),
+			'tab'        => 0,
+		),
 		'autoDownloadFontAwesome'    => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_01,
 			'help'       => LAN_SIMPLEMDE_ADMIN_02,
@@ -126,7 +147,7 @@ class simplemde_admin_ui extends e_admin_ui
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 				2 => LAN_SIMPLEMDE_ADMIN_OPT_03,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'autofocus'                  => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_03,
@@ -137,7 +158,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'autosaveEnabled'            => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_05,
@@ -148,13 +169,13 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'autosaveDelay'              => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_07,
 			'help'  => LAN_SIMPLEMDE_ADMIN_08,
 			'type'  => 'number',
-			'tab'   => 0,
+			'tab'   => 1,
 		),
 		'forceSync'                  => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_09,
@@ -165,7 +186,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'indentWithTabs'             => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_11,
@@ -176,13 +197,13 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'tabSize'                    => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_35,
 			'help'  => LAN_SIMPLEMDE_ADMIN_36,
 			'type'  => 'number',
-			'tab'   => 0,
+			'tab'   => 1,
 		),
 		'lineWrapping'               => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_15,
@@ -193,7 +214,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'allowAtxHeaderWithoutSpace' => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_17,
@@ -204,7 +225,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'strikethrough'              => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_19,
@@ -215,7 +236,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'underscoresBreakWords'      => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_21,
@@ -226,7 +247,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'promptURLs'                 => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_25,
@@ -237,7 +258,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'singleLineBreaks'           => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_27,
@@ -248,7 +269,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'codeSyntaxHighlighting'     => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_29,
@@ -259,7 +280,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'spellChecker'               => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_31,
@@ -270,7 +291,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'styleSelectedText'          => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_33,
@@ -281,7 +302,7 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'toolbarTips'                => array(
 			'title'      => LAN_SIMPLEMDE_ADMIN_37,
@@ -292,99 +313,89 @@ class simplemde_admin_ui extends e_admin_ui
 				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
 				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
 			),
-			'tab'        => 0,
+			'tab'        => 1,
 		),
 		'initialValue'               => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_13,
 			'help'  => LAN_SIMPLEMDE_ADMIN_14,
 			'type'  => 'text',
-			'tab'   => 0,
+			'tab'   => 1,
 		),
 		'placeholder'                => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_23,
 			'help'  => LAN_SIMPLEMDE_ADMIN_24,
 			'type'  => 'text',
-			'tab'   => 0,
+			'tab'   => 1,
 		),
 		'toggleBold'                 => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_39,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'toggleItalic'               => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_40,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'drawLink'                   => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_41,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'toggleHeadingSmaller'       => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_42,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'toggleHeadingBigger'        => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_43,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'cleanBlock'                 => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_44,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'drawImage'                  => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_45,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'toggleBlockquote'           => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_46,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'toggleOrderedList'          => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_47,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'toggleUnorderedList'        => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_48,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'toggleCodeBlock'            => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_49,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'togglePreview'              => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_50,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'toggleSideBySide'           => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_51,
 			'type'  => 'text',
-			'tab'   => 1,
+			'tab'   => 2,
 		),
 		'toggleFullScreen'           => array(
 			'title' => LAN_SIMPLEMDE_ADMIN_52,
 			'type'  => 'text',
-			'tab'   => 1,
-		),
-		'eToken'                     => array(
-			'title'      => LAN_SIMPLEMDE_ADMIN_53,
-			'type'       => 'dropdown',
-			'data'       => 'int',
-			'writeParms' => array(
-				0 => LAN_SIMPLEMDE_ADMIN_OPT_02,
-				1 => LAN_SIMPLEMDE_ADMIN_OPT_01,
-			),
-			'tab'        => 2,
+			'tab'   => 2,
 		),
 	);
 

@@ -10,10 +10,10 @@
     background-color: #ffffff;
 }
 
-.editor-preview-side > p,
-.editor-preview > p,
-.editor-preview-side > li,
-.editor-preview > li {
+.editor-preview-side p,
+.editor-preview p,
+.editor-preview-side li,
+.editor-preview li {
     color: #000000;
 }
 

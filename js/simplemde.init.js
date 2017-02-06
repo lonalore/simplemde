@@ -15,6 +15,11 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 	e107.simpleMDE = e107.simpleMDE || {};
 
 	/**
+	 * @type {Array}
+	 */
+	e107.simpleMDE.editors = e107.simpleMDE.editors || [];
+
+	/**
 	 * Behavior to initialize SimpleMDE editor.
 	 *
 	 * @type {{attach: e107.behaviors.simpleMDE.attach}}
@@ -203,6 +208,7 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 				// Update initial value.
 				$element.html(content);
 
+				// Editor ID.
 				var id = $element.attr('id');
 
 				$('#bbcode-panel-' + id + '--preview').hide();
@@ -271,12 +277,18 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 
 				editorConfig.previewRender = function (plainText, preview)
 				{
-					// Async function.
-					e107.simpleMDE.markdownParser(plainText, preview);
+					var editor = e107.simpleMDE.editors[$(this.element).attr('id')];
+
+					e107.callbacks.waitForFinalEvent(function ()
+					{
+						// Async function.
+						e107.simpleMDE.markdownParser(editor, plainText, preview);
+					}, 200, "simpleMDEpreviewRender");
+
 					return config.l10n['loading'] || "Loading...";
 				};
 
-				e107.simpleMDE[id] = new SimpleMDE(editorConfig);
+				e107.simpleMDE.editors[id] = new SimpleMDE(editorConfig);
 			});
 		}
 	};
@@ -284,12 +296,14 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 	/**
 	 * Custom function for parsing the plaintext Markdown and returning HTML.
 	 *
+	 * @param {object} editor
+	 *  SimpleMDE instance.
 	 * @param {string} plainText
 	 *  Plaintext Markdown.
 	 * @param {object} preview
 	 *  Element contains preview.
 	 */
-	e107.simpleMDE.markdownParser = function (plainText, preview)
+	e107.simpleMDE.markdownParser = function (editor, plainText, preview)
 	{
 		var endpoint = e107.settings.simpleMDE['previewRenderURL'];
 
@@ -302,7 +316,6 @@ var e107 = e107 || {'settings': {}, 'behaviors': {}};
 				$(preview).find('pre code').each(function ()
 				{
 					var $code = $(this);
-
 					var code = $code.text();
 					var highlighted = window.hljs.highlightAuto(code).value;
 

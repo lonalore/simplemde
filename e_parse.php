@@ -106,11 +106,14 @@ class simplemde_parse
 		// Remove wrapping BBCode tag (if available).
 		$text = str_replace(array('[markdown]', '[/markdown]'), '', $text);
 
+		$isHtml = false;
+
 		// If text contains [html], need to parse it to get HTML contents.
 		if(substr($text, 0, 6) == '[html]')
 		{
 			$tp = e107::getParser();
 			$text = $tp->toHTML($text, true);
+			$isHtml = true;
 		}
 
 		// Convert special HTML entities back to characters.
@@ -120,7 +123,7 @@ class simplemde_parse
 		$text = preg_replace('/<!--(.*)-->/Uis', '', $text);
 
 		// If text contains HTML tags, we need to convert it to Markdown format.
-		if($this->isHTML($text))
+		if($isHtml && $this->isHTML($text))
 		{
 			$converter = new HtmlConverter();
 			// Strip HTML tags that don't have a Markdown equivalent.

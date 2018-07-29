@@ -198,7 +198,8 @@ class simplemde_footer
 			$enable = true;
 		}
 
-		if($enable === true && e107::wysiwyg() === true && check_class($this->corePrefs['post_html']))
+		//if($enable === true && e107::wysiwyg() === true && check_class($this->corePrefs['post_html']))
+		if($enable === true && e107::wysiwyg(null, true) === 'simplemde' && check_class($this->corePrefs['post_html']))
 		{
 			return true;
 		}

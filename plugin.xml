@@ -3,7 +3,7 @@
 	<author name="Lóna Lore" url="https://lonalore.hu"/>
 	<summary lan="LAN_PLUGIN_SIMPLEMDE_SUMM">e107 integration for SimpleMDE Markdown Editor</summary>
 	<description lan="LAN_PLUGIN_SIMPLEMDE_DESC">A drop-in JavaScript textarea replacement for writing beautiful and understandable Markdown. The WYSIWYG-esque editor allows users who may be less experienced with Markdown to use familiar toolbar buttons and shortcuts. In addition, the syntax is rendered while editing to clearly show the expected result. Headings are larger, emphasized words are italicized, links are underlined, etc. SimpleMDE is one of the first editors to feature both built-in autosaving and spell checking.</description>
-	<category>content</category>
+	<category>misc</category>
 	<keywords>
 		<word>simplemde</word>
 		<word>markdown</word>
